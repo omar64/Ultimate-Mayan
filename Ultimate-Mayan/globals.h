@@ -4,10 +4,10 @@
 
 namespace globals 
 {
-	const int SCREEN_WIDTH = 640;//384;
-	const int SCREEN_HEIGHT = 480;//288;
+	const int SCREEN_WIDTH = 384;//384;
+	const int SCREEN_HEIGHT = 288;//288;
 
-	const float SPRITE_SCALE = 2.0f;
+	const float SPRITE_SCALE = 1.0f;	
 }
 
 enum Direction {

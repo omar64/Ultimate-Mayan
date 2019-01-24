@@ -1,12 +1,33 @@
-﻿  level.cpp
+﻿  animatedsprite.cpp
+animatedsprite.cpp(69): warning C4018: '<': no coinciden signed/unsigned
+animatedsprite.cpp(92): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+animatedsprite.cpp(93): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+  game.cpp
 c:\users\poseidon9\desktop\repositories\ultimate-mayan\ultimate-mayan\tile.h(4): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-level.cpp(135): warning C4018: '<': no coinciden signed/unsigned
-level.cpp(77): warning C4477: 'printf' : la cadena de formato '%s' requiere un argumento de tipo 'char *', pero el argumento variádico 1 tiene el tipo 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
-level.cpp(66): warning C4101: 'path': variable local sin referencia
-level.cpp(208): warning C4018: '<': no coinciden signed/unsigned
+game.cpp(153): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+game.cpp(172): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  graphics.cpp
+  level.cpp
+c:\users\poseidon9\desktop\repositories\ultimate-mayan\ultimate-mayan\tile.h(4): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+level.cpp(104): warning C4018: '<': no coinciden signed/unsigned
+level.cpp(56): warning C4101: 'path': variable local sin referencia
+level.cpp(166): warning C4018: '<': no coinciden signed/unsigned
+  main.cpp
+c:\users\poseidon9\desktop\repositories\ultimate-mayan\ultimate-mayan\tile.h(4): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+  player.cpp
+player.cpp(62): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+player.cpp(67): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  sprite.cpp
+sprite.cpp(41): warning C4838: la conversión de 'float' en 'int' requiere una conversión de restricción
+sprite.cpp(41): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+  tile.cpp
+c:\users\poseidon9\desktop\repositories\ultimate-mayan\ultimate-mayan\tile.h(4): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+tile.cpp(12): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+tile.cpp(19): warning C4838: la conversión de 'float' en 'int' requiere una conversión de restricción
+tile.cpp(19): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
   Generando código
-  1 of 1384 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+  5 of 1384 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    10 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
   Ultimate-Mayan.vcxproj -> C:\Users\poseidon9\Desktop\Repositories\Ultimate-Mayan\Release\Ultimate-Mayan.exe
