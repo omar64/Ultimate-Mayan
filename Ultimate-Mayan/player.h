@@ -22,6 +22,11 @@ class Player  : public AnimatedSprite
 		*/
 		void moveRight();
 
+		/* jump
+			fucking moon jump up in this bitch
+		*/
+		void jump();
+
 		/*	stopMoving
 			stops moving the player
 		*/
@@ -29,10 +34,16 @@ class Player  : public AnimatedSprite
 
 		virtual void animationDone(std::string currentAnimation);
 		virtual void setupAnimations();
+
+		void handleTileCollisions(std::vector<RectangleCollision> &others);
+
+		const float getX() const;
+		const float getY() const;
 	private:
 		float _dx, _dy;
 
 		Direction _facing;
+		bool _grounded;
 };
 
 #endif

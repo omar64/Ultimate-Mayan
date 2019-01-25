@@ -4,6 +4,9 @@
 #include <SDL.h>
 #include <string>
 
+#include "rectanglecollision.h"
+#include "globals.h"
+
 class Graphics;
 
 /*	Sprite class
@@ -20,10 +23,14 @@ public:
 	virtual void update();
 	void draw(Graphics &graphics, int x, int y);
 
+	const RectangleCollision getBoundingBox() const;
+	const sides::Side getCollisionSide(RectangleCollision &other) const;
+
 protected:
 	SDL_Rect _sourceRect;
 	SDL_Texture* _spriteSheet;
 	float _x, _y;
+	RectangleCollision _boundingBox;
 
 //private:
 

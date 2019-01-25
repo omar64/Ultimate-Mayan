@@ -146,6 +146,11 @@ void Game::gameLoop()
 			}
 		}
 
+		if (input.wasKeyPressed(CONTROL_JUMP) == true)
+		{
+			this->_player.jump();
+		}
+
 		const int CURRENT_TIME_MS = SDL_GetTicks();
 		int ELAPSED_TIME_MS = CURRENT_TIME_MS - LAST_UPDATE_TIME;
 		int aux = std::min(ELAPSED_TIME_MS, MAX_FRAME_TIME);
@@ -170,5 +175,13 @@ void Game::update(float elapsedTime)
 {
 	this->_player.update(elapsedTime);
 	this->_level.update(elapsedTime);
+
+	//check collisions
+	std::vector<RectangleCollision> others;
+	if ((others = this->_level.checkTileCollision(this->_player.getBoundingBox())).size() > 0)
+	{
+		//player collided with at least one tile. handle it
+		this->_player.handleTileCollisions(others);
+	}
 }
 
