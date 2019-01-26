@@ -3,17 +3,18 @@
 
 namespace player_constants
 {
-	const float WALK_SPEED = 0.2f;
-	const float GRAVITY = 0.002f;
-	const float GRAVITY_CAP = 0.8f;
+	const float WALK_SPEED = 0.15f;
+	const float GRAVITY = 0.0015f;
+	const float GRAVITY_CAP = 0.4f;
+	const float JUMPING_FORCE = -.41f;
 }
 
 Player::Player()
 {
 }
 
-Player::Player(Graphics &graphics, float x, float y) :
-	AnimatedSprite(graphics, "Imagenes/Sprites/Rich01.png", 0, 0, 44, 45, x, y, 145),
+Player::Player(Graphics &graphics, Vector2 spawnpoint) :
+	AnimatedSprite(graphics, "Imagenes/Sprites/Rich01.png", 0, 0, 44, 45, spawnpoint.x, spawnpoint.y, 145),
 	_dx(0),
 	_dy(0),
 	_facing(RIGHT),
@@ -50,17 +51,24 @@ const float Player::getY() const
 }
 
 void Player::moveLeft()
-{
+{	
+	if (this->_grounded)
+	{
+		this->playAnimation("RunLeft");
+	}
 	this->_dx = -player_constants::WALK_SPEED;
-	this->playAnimation("RunLeft");
 	this->_facing = LEFT;
 
 }
 
 void Player::moveRight()
 {
+	if (this->_grounded)
+	{
+		this->playAnimation("RunRight");
+	}
+	
 	this->_dx = player_constants::WALK_SPEED;
-	this->playAnimation("RunRight");
 	this->_facing = RIGHT;
 }
 
@@ -69,7 +77,9 @@ void Player::jump()
 	//for now
 	if (this->_grounded)
 	{
-		this->_dy = -.5;
+		this->playAnimation(this->_facing == RIGHT ? "JumpRight" : "JumpLeft");
+
+		this->_dy = player_constants::JUMPING_FORCE;
 		this->_grounded = false;
 	}
 }
@@ -77,7 +87,10 @@ void Player::jump()
 void Player::stopMoving()
 {
 	this->_dx = 0;
-	this->playAnimation(this->_facing == RIGHT ? "IdleRight" : "IdleLeft");
+	if (this->_grounded)
+	{
+		this->playAnimation(this->_facing == RIGHT ? "IdleRight" : "IdleLeft");
+	}
 }
 
 //void handleTileCollisions
@@ -93,8 +106,13 @@ void Player::handleTileCollisions(std::vector<RectangleCollision> &others)
 			switch (collisionSide)
 			{
 				case sides::TOP:
-					this->_y = others.at(i).getBottom() + 1;
 					this->_dy = 0;
+					this->_y = others.at(i).getBottom() + 1;
+					if (this->_grounded)
+					{
+						this->_dx = 0;
+						this->_x -= this->_facing == RIGHT ? player_constants::WALK_SPEED : -player_constants::WALK_SPEED;
+					}
 					break;
 				case sides::BOTTOM:
 					this->_y = others.at(i).getTop() - this->_boundingBox.getHeight() - 1;
@@ -108,6 +126,33 @@ void Player::handleTileCollisions(std::vector<RectangleCollision> &others)
 					this->_x = others.at(i).getLeft() - this->_boundingBox.getWidth() - 1;
 					break;
 			}
+		}
+	}
+}
+
+//void handleSlopeCollisions
+//handle collisions with all  slopes the player is colliding with
+void Player::handleSlopeCollisions(std::vector<Slope> &others)
+{
+	for (int i = 0; i < others.size(); i++)
+	{
+		//calcuclate where on the slope the	player's bottom center is touching
+		//and use y = mx + b to figure out the y position to place him at
+		//First calculate "b" (slope intercept) using one of the points (b = y - mx)
+		int b = (others.at(i).getP1().y	- (others.at(i).getSlope() * fabs(others.at(i).getP1().x)));
+
+		//now get a player center x
+		int centerX = this->_boundingBox.getCenterX();
+
+		//now pass the x into the equation y = mx + b (using our newly found b and x) to get the new y position
+		int newY = (others.at(i).getSlope() * centerX) + b - (this->_boundingBox.getWidth() / 2); //8 is a temporary magic number to fix a problem maybe use width
+
+		//re-position the player to the new correct "y"
+		if (this->_grounded)
+		{
+			this->_y = newY - this->_boundingBox.getHeight();
+			this->_grounded = true;
+
 		}
 	}
 }

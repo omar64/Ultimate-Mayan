@@ -34,9 +34,6 @@ public:
 	*/
 	void draw(Graphics &graphics, int x, int y);
 
-
-	~AnimatedSprite();
-
 protected:
 	double _timeToUpdate;
 	bool _currentAnimationOnce;

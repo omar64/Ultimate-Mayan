@@ -45,8 +45,8 @@ void Game::gameLoop()
 	Input input;
 	SDL_Event event;
 
-	this->_player = Player(graphics, 100, 100);
 	this->_level = Level("Ultimate Mayan", Vector2(100,100), graphics);
+	this->_player = Player(graphics, this->_level.getPlayerSpawnPoint());
 
 
 	int LAST_UPDATE_TIME = SDL_GetTicks();
@@ -178,10 +178,16 @@ void Game::update(float elapsedTime)
 
 	//check collisions
 	std::vector<RectangleCollision> others;
-	if ((others = this->_level.checkTileCollision(this->_player.getBoundingBox())).size() > 0)
+	if ((others = this->_level.checkTileCollisions(this->_player.getBoundingBox())).size() > 0)
 	{
 		//player collided with at least one tile. handle it
 		this->_player.handleTileCollisions(others);
+	}
+	//check slopes
+	std::vector<Slope> otherSlopes;
+	if ((otherSlopes = this->_level.checkSlopeCollisions(this->_player.getBoundingBox())).size() > 0)
+	{
+		this->_player.handleSlopeCollisions(otherSlopes);
 	}
 }
 
