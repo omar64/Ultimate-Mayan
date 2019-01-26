@@ -1,1 +1,2 @@
-36x56
+Enemy01: 36x56
+Enemy02: 32x51 (correr) 32x49 (saltar) 30x45 (idle)
