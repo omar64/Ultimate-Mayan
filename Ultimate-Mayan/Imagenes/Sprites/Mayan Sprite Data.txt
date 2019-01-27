@@ -1,0 +1,7 @@
+Run: 38x58 Frames: 7 Ubicaciòn: 1-58
+Jump Down: 31x55 Frames: 4 Ubicaciòn: 59-114
+Jump Up:   33x56 Frames: 4 Ubicaciòn: 115-171
+Gunfire Stand: 32x52 Frames: 3 Ubicaciòn: 172-224
+Gunfire Crouch:32x43 Frames: 3 Ubicaciòn: 225-268
+Idle: 32x52 Frames: 1 Ubicaciòn: 172-224
+Crouch: 32x43 Frames 1 Ubicaciòn: 225-268
