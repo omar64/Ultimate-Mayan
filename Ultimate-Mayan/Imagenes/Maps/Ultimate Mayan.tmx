@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="24" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="9">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="24" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="29">
  <tileset firstgid="1" name="prueba" tilewidth="16" tileheight="16" tilecount="432" columns="24">
   <image source="../Tiles/Ultimate Mayan0.png" width="384" height="288"/>
+ </tileset>
+ <tileset firstgid="433" name="NpcSym" tilewidth="16" tileheight="16" tilecount="3200" columns="80">
+  <image source="../Tiles/BackGround1.png" width="1280" height="640"/>
+  <tile id="437">
+   <animation>
+    <frame tileid="438" duration="100"/>
+    <frame tileid="439" duration="100"/>
+    <frame tileid="440" duration="100"/>
+    <frame tileid="367" duration="100"/>
+   </animation>
+  </tile>
  </tileset>
  <layer id="5" name="Background" width="24" height="18">
   <data>
@@ -145,7 +156,7 @@
    <tile gid="138"/>
    <tile gid="139"/>
    <tile gid="140"/>
-   <tile gid="141"/>
+   <tile gid="870"/>
    <tile gid="142"/>
    <tile gid="143"/>
    <tile gid="144"/>
@@ -877,5 +888,21 @@
  </layer>
  <objectgroup id="7" name="collisions">
   <object id="4" x="-1" y="224" width="385" height="14"/>
+  <object id="26" x="275" y="110" width="31" height="113"/>
+ </objectgroup>
+ <objectgroup id="9" name="spawnpoints">
+  <object id="9" name="player" x="23" y="201">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup id="10" name="slopes">
+  <object id="24" x="276" y="111">
+   <polyline points="0,0 -211,112"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="11" name="enemies" color="#4000ff">
+  <object id="28" name="bluealien" x="346" y="177">
+   <ellipse/>
+  </object>
  </objectgroup>
 </map>

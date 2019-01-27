@@ -7,8 +7,12 @@
 #include "globals.h"
 #include "tile.h"
 #include "rectanglecollision.h"
+#include "slope.h"
+#include "animatedtile.h"
 
 class Graphics;
+class Enemy;
+class Player;
 struct SDL_Texture;
 struct SDL_Rect;
 struct Tileset;
@@ -16,12 +20,16 @@ struct Tileset;
 class Level {
 public:
 	Level();
-	Level(std::string mapName, Vector2 spawnPoint, Graphics &graphics);
+	Level(std::string mapName, Graphics &graphics);
 	~Level();
-	void update(int elapsedTime);
+	void update(int elapsedTime, Player &player);
 	void draw(Graphics &graphics);
 
-	std::vector<RectangleCollision> checkTileCollision(const RectangleCollision &other);
+	std::vector<RectangleCollision> checkTileCollisions(const RectangleCollision &other);
+	std::vector<Slope> checkSlopeCollisions(const RectangleCollision &other);
+	std::vector<Enemy*> checkEnemyCollisions(const RectangleCollision &other);
+
+	const Vector2 getPlayerSpawnPoint() const;
 
 private:
 	std::string _mapName;
@@ -35,11 +43,20 @@ private:
 	std::vector<Tile> _tileList;
 	std::vector<Tileset> _tilesets;
 	std::vector<RectangleCollision> _collisionRects;
+	std::vector<Slope> _slopes;
+
+	std::vector<AnimatedTile> _animatedTileList;
+	std::vector<AnimatedTileInfo> _animatedTileInfos;
+
+
+	std::vector<Enemy*> _enemies;
 
 	/* void loadMap
 	* Loads a map
 	*/
 	void loadMap(std::string mapName, Graphics &graphics);
+
+	Vector2 getTilesetPosition(Tileset tls, int gid, int tileWidth, int tileHeight);
 
 };
 

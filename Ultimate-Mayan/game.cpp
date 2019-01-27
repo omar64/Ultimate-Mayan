@@ -14,7 +14,7 @@
 namespace
 {
 	const int FPS = 60;
-	const int MAX_FRAME_TIME = 5 * 1000 / FPS;	
+	const int MAX_FRAME_TIME = 1000 / FPS;	
 
 }
 
@@ -45,8 +45,9 @@ void Game::gameLoop()
 	Input input;
 	SDL_Event event;
 
-	this->_player = Player(graphics, 100, 100);
-	this->_level = Level("Ultimate Mayan", Vector2(100,100), graphics);
+	this->_level = Level("Ultimate Mayan", graphics);
+	this->_player = Player(graphics, this->_level.getPlayerSpawnPoint());
+	this->_hud = HUD(graphics, this->_player);
 
 
 	int LAST_UPDATE_TIME = SDL_GetTicks();
@@ -147,14 +148,15 @@ void Game::gameLoop()
 		}
 
 		if (input.wasKeyPressed(CONTROL_JUMP) == true)
-		{
-			this->_player.jump();
+		{			
+				this->_player.jump();
 		}
 
 		const int CURRENT_TIME_MS = SDL_GetTicks();
 		int ELAPSED_TIME_MS = CURRENT_TIME_MS - LAST_UPDATE_TIME;
 		int aux = std::min(ELAPSED_TIME_MS, MAX_FRAME_TIME);
 
+		this->_graphics = graphics;
 		this->update(aux);
 		LAST_UPDATE_TIME = CURRENT_TIME_MS;
 
@@ -167,6 +169,7 @@ void Game::draw(Graphics &graphics)
 	graphics.clear();
 	this->_level.draw(graphics);
 	this->_player.draw(graphics); //100, 100
+	this->_hud.draw(graphics);
 
 	graphics.flip();
 }
@@ -174,14 +177,29 @@ void Game::draw(Graphics &graphics)
 void Game::update(float elapsedTime)
 {
 	this->_player.update(elapsedTime);
-	this->_level.update(elapsedTime);
+	this->_level.update(elapsedTime, this->_player);
+	this->_hud.update(elapsedTime, this->_player);
 
 	//check collisions
 	std::vector<RectangleCollision> others;
-	if ((others = this->_level.checkTileCollision(this->_player.getBoundingBox())).size() > 0)
+	if ((others = this->_level.checkTileCollisions(this->_player.getBoundingBox())).size() > 0)
 	{
 		//player collided with at least one tile. handle it
 		this->_player.handleTileCollisions(others);
+	}
+	//check slopes
+	std::vector<Slope> otherSlopes;
+	if ((otherSlopes = this->_level.checkSlopeCollisions(this->_player.getBoundingBox())).size() > 0)
+	{
+		this->_player.handleSlopeCollisions(otherSlopes);
+	}
+
+	//check enemies
+	std::vector<Enemy*> otherEnemies;
+	
+	if ((otherEnemies = this->_level.checkEnemyCollisions(this->_player.getBoundingBox())).size() > 0)
+	{
+		this->_player.handleEnemyCollisions(otherEnemies);
 	}
 }
 
