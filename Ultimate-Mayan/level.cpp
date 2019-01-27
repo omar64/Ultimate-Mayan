@@ -2,6 +2,8 @@
 #include "graphics.h"
 #include "globals.h"
 #include "utils.h"
+#include "player.h"
+#include "enemy.h"
 
 #include "tinyxml2.h"
 
@@ -15,9 +17,8 @@ using namespace tinyxml2;
 
 Level::Level() {}
 
-Level::Level(std::string mapName, Vector2 spawnPoint, Graphics &graphics) :
+Level::Level(std::string mapName, Graphics &graphics) :
 	_mapName(mapName),
-	_spawnPoint(spawnPoint),
 	_size(Vector2(0, 0))
 {
 	this->loadMap(mapName, graphics);
@@ -280,14 +281,40 @@ void Level::loadMap(std::string mapName, Graphics &graphics) {
 				}
 			}
 
+			else if (ss.str() == "enemies")
+			{
+				XMLElement* pObject = pObjectGroup->FirstChildElement("object");
+				if (pObject != NULL) {
+					while (pObject) {
+						float x = pObject->FloatAttribute("x");
+						float y = pObject->FloatAttribute("y");
+						const char* name = pObject->Attribute("name");
+						std::stringstream ss;
+						ss << name;
+						if (ss.str() == "bluealien") {
+							this->_enemies.push_back(new AlienBlue(graphics, Vector2(std::floor(x) * globals::SPRITE_SCALE, std::floor(y) * globals::SPRITE_SCALE)));
+						}
+						else
+						{
+							printf("Ese enemigo no existe o no ha sido programado jue p**a --- %s\n", ss.str());
+						}
+
+						pObject = pObject->NextSiblingElement("object");
+					}
+				}
+			}
 			pObjectGroup = pObjectGroup->NextSiblingElement("objectgroup");
 		}
 	}
 }
 
-void Level::update(int elapsedTime) {
+void Level::update(int elapsedTime, Player &player) {
 	for (int i = 0; i < this->_animatedTileList.size(); i++) {
 		this->_animatedTileList.at(i).update(elapsedTime);
+	}
+	for (int i = 0; i < this->_enemies.size(); i++)
+	{
+		this->_enemies.at(i)->update(elapsedTime, player);
 	}
 }
 
@@ -297,6 +324,10 @@ void Level::draw(Graphics &graphics) {
 	}
 	for (int i = 0; i < this->_animatedTileList.size(); i++) {
 		this->_animatedTileList.at(i).draw(graphics);
+	}
+	for (int i = 0; i < this->_enemies.size(); i++)
+	{
+		this->_enemies.at(i)->draw(graphics);
 	}
 }
 
@@ -315,6 +346,20 @@ std::vector<Slope> Level::checkSlopeCollisions(const RectangleCollision &other) 
 	for (int i = 0; i < this->_slopes.size(); i++) {
 		if (this->_slopes.at(i).collidesWith(other)) {
 			others.push_back(this->_slopes.at(i));
+		}
+	}
+	return others;
+}
+
+std::vector<Enemy*> Level::checkEnemyCollisions(const RectangleCollision &other) {
+	std::vector<Enemy*> others;
+	for (int i = 0; i < this->_enemies.size(); i++)
+	{
+		//tell me why tell me why huuuh huuuuh~
+		RectangleCollision temp_rect = RectangleCollision(this->_enemies.at(i)->getBoundingBox());
+		if (temp_rect.collidesWith(other))
+		{
+			others.push_back(this->_enemies.at(i));
 		}
 	}
 	return others;

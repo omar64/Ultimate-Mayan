@@ -1,26 +1,28 @@
-﻿  level.cpp
-c:\users\poseidon9\desktop\repositories\ultimate-mayan\ultimate-mayan\tile.h(4): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+﻿  enemy.cpp
 c:\users\poseidon9\desktop\repositories\ultimate-mayan\ultimate-mayan\slope.h(19): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-level.cpp(128): warning C4018: '<': no coinciden signed/unsigned
-level.cpp(163): warning C4018: '<': no coinciden signed/unsigned
-level.cpp(172): warning C4018: '<': no coinciden signed/unsigned
-level.cpp(219): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-level.cpp(232): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-level.cpp(244): warning C4018: '<': no coinciden signed/unsigned
-level.cpp(251): warning C4018: '<': no coinciden signed/unsigned
-level.cpp(254): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-level.cpp(256): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-level.cpp(275): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-level.cpp(64): warning C4477: 'printf' : la cadena de formato '%s' requiere un argumento de tipo 'char *', pero el argumento variádico 1 tiene el tipo 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
-level.cpp(57): warning C4101: 'path': variable local sin referencia
-level.cpp(289): warning C4018: '<': no coinciden signed/unsigned
-level.cpp(295): warning C4018: '<': no coinciden signed/unsigned
-level.cpp(298): warning C4018: '<': no coinciden signed/unsigned
-level.cpp(305): warning C4018: '<': no coinciden signed/unsigned
-level.cpp(315): warning C4018: '<': no coinciden signed/unsigned
+c:\users\poseidon9\desktop\repositories\ultimate-mayan\ultimate-mayan\tile.h(4): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+enemy.cpp(14): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+enemy.cpp(24): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+enemy.cpp(52): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
+  player.cpp
+c:\users\poseidon9\desktop\repositories\ultimate-mayan\ultimate-mayan\slope.h(19): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\poseidon9\desktop\repositories\ultimate-mayan\ultimate-mayan\tile.h(4): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+player.cpp(24): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+player.cpp(107): warning C4018: '<': no coinciden signed/unsigned
+player.cpp(116): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+player.cpp(124): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+player.cpp(129): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+player.cpp(132): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+player.cpp(143): warning C4018: '<': no coinciden signed/unsigned
+player.cpp(148): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+player.cpp(154): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+player.cpp(159): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+player.cpp(168): warning C4018: '<': no coinciden signed/unsigned
+player.cpp(193): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+player.cpp(199): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
   Generando código
-  0 of 2124 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+  3 of 2305 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    15 functions had inline decision re-evaluated but remain unchanged
+    23 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
   Ultimate-Mayan.vcxproj -> C:\Users\poseidon9\Desktop\Repositories\Ultimate-Mayan\Release\Ultimate-Mayan.exe

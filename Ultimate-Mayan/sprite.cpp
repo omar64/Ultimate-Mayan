@@ -19,6 +19,7 @@ Sprite::Sprite(Graphics &graphics, const std::string &filePath, int sourceX, int
 	this->_sourceRect.w = width;
 	this->_sourceRect.h = height;
 
+	printf("%s",filePath);
 	this->_spriteSheet = SDL_CreateTextureFromSurface(graphics.getRenderer(), graphics.loadImage(filePath));
 	if (this->_spriteSheet == NULL)
 	{
@@ -82,4 +83,24 @@ const sides::Side Sprite::getCollisionSide(RectangleCollision &other) const
 		lowest == abs(amtTop) ? sides::TOP :
 		lowest == abs(amtBottom) ? sides::BOTTOM :
 		sides::NONE;
+}
+
+void Sprite::setSourceRectX(int value)
+{
+	this->_sourceRect.x = value;
+}
+
+void Sprite::setSourceRectY(int value)
+{
+	this->_sourceRect.y = value;
+}
+
+void Sprite::setSourceRectW(int value)
+{
+	this->_sourceRect.w = value;
+}
+
+void Sprite::setSourceRectH(int value)
+{
+	this->_sourceRect.h = value;
 }

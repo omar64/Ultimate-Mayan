@@ -18,7 +18,9 @@ Player::Player(Graphics &graphics, Vector2 spawnpoint) :
 	_dx(0),
 	_dy(0),
 	_facing(RIGHT),
-	_grounded(false)
+	_grounded(false),
+	_maxHealth(3),
+	_currentHealth(3)
 {
 	graphics.loadImage("Imagenes/Sprites/Rich01.png");
 	this->setupAnimations();
@@ -55,6 +57,10 @@ void Player::moveLeft()
 	if (this->_grounded)
 	{
 		this->playAnimation("RunLeft");
+	}
+	else
+	{
+		this->playAnimation("JumpLeft");
 	}
 	this->_dx = -player_constants::WALK_SPEED;
 	this->_facing = LEFT;
@@ -154,6 +160,23 @@ void Player::handleSlopeCollisions(std::vector<Slope> &others)
 			this->_grounded = true;
 
 		}
+	}
+}
+
+void Player::handleEnemyCollisions(std::vector<Enemy*> &others)
+{
+	for (int i = 0; i < others.size(); i++)
+	{
+		others.at(i)->touchPlayer(this);
+	}
+}
+
+void Player::gainHealth(int amount)
+{
+	this->_currentHealth += amount;
+	if (this->_currentHealth > this->_maxHealth)
+	{
+		this->_currentHealth = this->_maxHealth;
 	}
 }
 
