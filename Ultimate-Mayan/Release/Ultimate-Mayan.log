@@ -1,28 +1,14 @@
-﻿  enemy.cpp
-c:\users\poseidon9\desktop\repositories\ultimate-mayan\ultimate-mayan\slope.h(19): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+﻿  game.cpp
+c:\users\poseidon9\desktop\repositories\ultimate-mayan\ultimate-mayan\rectanglecollision.h(23): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\poseidon9\desktop\repositories\ultimate-mayan\ultimate-mayan\rectanglecollision.h(24): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
 c:\users\poseidon9\desktop\repositories\ultimate-mayan\ultimate-mayan\tile.h(4): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-enemy.cpp(14): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-enemy.cpp(24): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-enemy.cpp(52): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
-  player.cpp
-c:\users\poseidon9\desktop\repositories\ultimate-mayan\ultimate-mayan\slope.h(19): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\poseidon9\desktop\repositories\ultimate-mayan\ultimate-mayan\tile.h(4): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-player.cpp(24): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-player.cpp(107): warning C4018: '<': no coinciden signed/unsigned
-player.cpp(116): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-player.cpp(124): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-player.cpp(129): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-player.cpp(132): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-player.cpp(143): warning C4018: '<': no coinciden signed/unsigned
-player.cpp(148): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
-player.cpp(154): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
-player.cpp(159): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-player.cpp(168): warning C4018: '<': no coinciden signed/unsigned
-player.cpp(193): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-player.cpp(199): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+game.cpp(48): warning C4244: 'argumento': conversión de 'const int' a 'float'; posible pérdida de datos
+game.cpp(166): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+game.cpp(189): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+game.cpp(190): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
   Generando código
-  3 of 2305 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+  4 of 2312 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    23 functions had inline decision re-evaluated but remain unchanged
+    12 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
   Ultimate-Mayan.vcxproj -> C:\Users\poseidon9\Desktop\Repositories\Ultimate-Mayan\Release\Ultimate-Mayan.exe

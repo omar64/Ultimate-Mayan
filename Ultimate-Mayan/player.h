@@ -14,6 +14,7 @@ class Player  : public AnimatedSprite
 		Player(Graphics &graphics, Vector2 spawnpoint);
 		void draw(Graphics &graphics);
 		void update(float elapsedTime);
+		void putInTheMiddle();
 
 		/*	moveLeft
 		Moves the player left by -dx

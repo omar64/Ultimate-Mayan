@@ -6,7 +6,7 @@ namespace player_constants
 	const float WALK_SPEED = 0.15f;
 	const float GRAVITY = 0.0015f;
 	const float GRAVITY_CAP = 0.4f;
-	const float JUMPING_FORCE = -.41f;
+	const float JUMPING_FORCE = -.5f;
 }
 
 Player::Player()
@@ -14,7 +14,7 @@ Player::Player()
 }
 
 Player::Player(Graphics &graphics, Vector2 spawnpoint) :
-	AnimatedSprite(graphics, "Imagenes/Sprites/Rich01.png", 0, 0, 44, 45, spawnpoint.x, spawnpoint.y, 145),
+	AnimatedSprite(graphics, "Imagenes/Sprites/Mayan.png", 0, 0, 44, 45, spawnpoint.x, spawnpoint.y, 145),
 	_dx(0),
 	_dy(0),
 	_facing(RIGHT),
@@ -22,24 +22,29 @@ Player::Player(Graphics &graphics, Vector2 spawnpoint) :
 	_maxHealth(3),
 	_currentHealth(3)
 {
-	graphics.loadImage("Imagenes/Sprites/Rich01.png");
+	graphics.loadImage("Imagenes/Sprites/Mayan.png");
 	this->setupAnimations();
 	this->playAnimation("IdleRight");
 }
 
 void Player::setupAnimations()
 {
-	this->addAnimation(6, 0, 0, "RunRight", 44, 45, Vector2(0, 0));
-	this->addAnimation(6, 0, 45, "RunLeft", 44, 45, Vector2(0, 0));
-	this->addAnimation(5, 0, 90, "JumpRight", 44, 45, Vector2(0, 0));
-	this->addAnimation(5, 0, 135, "JumpLeft", 44, 45, Vector2(0, 0));
-	this->addAnimation(4, 0, 180, "IdleRight", 44, 45, Vector2(0, 0));
-	this->addAnimation(4, 0, 224, "IdleLeft", 44, 45, Vector2(0, 0));
+	this->addAnimation(7, 0, 0, "RunRight", 38, 58, Vector2(0, 0));
+	this->addAnimation(7, 0, 58, "RunLeft", 38, 58, Vector2(0, 0));
+	this->addAnimation(4, 0, 116, "JumpRight", 33, 56, Vector2(0, 0));
+	this->addAnimation(4, 4, 116, "JumpLeft", 33, 56, Vector2(0, 0));
+	this->addAnimation(1, 0, 227, "IdleRight", 32, 52, Vector2(0, 0));
+	this->addAnimation(1, 3, 227, "IdleLeft", 32, 52, Vector2(0, 0));
 }
 
 void Player::animationDone(std::string currentAnimation)
 {
 	
+}
+
+void Player::putInTheMiddle()
+{
+	this->_x = globals::SCREEN_WIDTH / 2;
 }
 
 const float Player::getX() const

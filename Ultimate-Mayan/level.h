@@ -30,6 +30,9 @@ public:
 	std::vector<Enemy*> checkEnemyCollisions(const RectangleCollision &other);
 
 	const Vector2 getPlayerSpawnPoint() const;
+	const inline Vector2 getSize() const { return Vector2(this->_size.x * this->_tileSize.x, this->_size.y * this->_tileSize.y); }
+
+	void moveEverything(float x_movement, float y_movement);
 
 private:
 	std::string _mapName;

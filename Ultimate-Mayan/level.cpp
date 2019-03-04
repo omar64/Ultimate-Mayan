@@ -62,7 +62,6 @@ void Level::loadMap(std::string mapName, Graphics &graphics) {
 			{
 				ss << source[i];
 			}
-			printf("%s",ss.str());
 			pTileset->QueryIntAttribute("firstgid", &firstgid);
 			SDL_Texture* tex = SDL_CreateTextureFromSurface(graphics.getRenderer(), graphics.loadImage(ss.str()));
 			this->_tilesets.push_back(Tileset(tex, firstgid));
@@ -373,7 +372,6 @@ Vector2 Level::getTilesetPosition(Tileset tls, int gid, int tileWidth, int tileH
 	int tilesetWidth, tilesetHeight;
 	SDL_QueryTexture(tls.Texture, NULL, NULL, &tilesetWidth, &tilesetHeight);
 
-	//printf("%d ----- %d\n", tilesetWidth, tileWidth);
 
 	int tsxx = (gid -1) % (tilesetWidth / tileWidth);
 	tsxx *= tileWidth;
@@ -382,4 +380,26 @@ Vector2 Level::getTilesetPosition(Tileset tls, int gid, int tileWidth, int tileH
 	tsyy = tileHeight * amt;
 	Vector2 finalTilesetPosition = Vector2(tsxx, tsyy);
 	return finalTilesetPosition;
+}
+
+void Level::moveEverything(float x_movement, float y_movement)
+{	
+	for (int i = 0; i < this->_tileList.size(); i++)
+	{
+		_tileList.at(i).move(x_movement, y_movement);
+	}
+		
+	/*
+	for (int i = 0; i < this->_collisionRects.size(); i++)
+	{	
+		RectangleCollision tempRect = RectangleCollision(
+			std::ceil(((this->_collisionRects.at(i).getLeft()) * globals::SPRITE_SCALE) + x_movement),
+			std::ceil(this->_collisionRects.at(i).getTop() + y_movement) * globals::SPRITE_SCALE,
+			std::ceil(this->_collisionRects.at(i).getWidth()) * globals::SPRITE_SCALE,
+			std::ceil(this->_collisionRects.at(i).getHeight()) * globals::SPRITE_SCALE
+		);
+
+		this->_collisionRects.at(i) = tempRect;
+	}	
+	*/
 }

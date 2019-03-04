@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="60" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="17" nextobjectid="45">
- <tileset firstgid="1" source="Walls StoneExt.tsx"/>
- <tileset firstgid="721" source="Bosque.tsx"/>
- <tileset firstgid="1153" source="Fondo Yellow.tsx"/>
- <tileset firstgid="1585" source="Walls Stoneint.tsx"/>
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="60" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="17" nextobjectid="45">
+ <tileset firstgid="1" name="Walls StoneExt" tilewidth="16" tileheight="16" tilecount="720" columns="12">
+  <image source="../Tiles/Walls Stone.png" width="192" height="960"/>
+ </tileset>
+ <tileset firstgid="721" name="Bosque" tilewidth="16" tileheight="16" tilecount="432" columns="24">
+  <image source="../Tiles/Bosque.png" width="384" height="288"/>
+ </tileset>
+ <tileset firstgid="1153" name="Fondo Yellow" tilewidth="16" tileheight="16" tilecount="432" columns="24">
+  <image source="../Tiles/Fondo Yellow.png" width="384" height="288"/>
+ </tileset>
+ <tileset firstgid="1585" name="Walls Stoneint" tilewidth="16" tileheight="16" tilecount="320" columns="20">
+  <image source="../Tiles/Walls Stone int.png" width="320" height="256"/>
+ </tileset>
  <layer id="14" name="Backgrounds parallax" width="60" height="18">
   <data>
    <tile gid="1153"/>
@@ -5433,14 +5441,14 @@
   <object id="38" x="256" y="143.818" width="95.8182" height="32"/>
   <object id="39" x="128.364" y="96.5455" width="31.6364" height="31.4545"/>
   <object id="40" x="0.181818" y="112.364" width="31.8182" height="14.8182"/>
-  <object id="41" x="-26.6667" y="63.6667" width="26.6667" height="224.667"/>
+  <object id="41" x="-26.6667" y="64.6667" width="26.6667" height="224.667"/>
   <object id="43" x="991" y="-1" width="18.6667" height="224.667"/>
  </objectgroup>
- <objectgroup id="9" name="spawnpoints">
-  <object id="44" x="23.3333" y="185">
+ <objectgroup id="9" name="spawn points">
+  <object id="44" name="player" x="75.3333" y="179">
    <ellipse/>
   </object>
  </objectgroup>
- <objectgroup id="10" name="slopes" locked="1"/>
- <objectgroup color="#4000ff" id="11" name="enemies" locked="1"/>
+ <objectgroup id="10" name="slopes"/>
+ <objectgroup color="#4000ff" id="11" name="enemies"/>
 </map>

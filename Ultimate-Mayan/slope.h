@@ -20,6 +20,11 @@ public:
 		}
 	}
 
+	void inline move(float x_movement, float y_movement) {
+		this->_p1.x += x_movement; this->_p1.y += y_movement;
+		this->_p2.x += x_movement; this->_p2.y += y_movement;
+	}
+
 	const inline float getSlope()
 	{
 		return this->_slope;

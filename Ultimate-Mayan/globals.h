@@ -41,11 +41,11 @@ enum Direction {
 
 struct Vector2 
 {
-	int x, y;
+	float x, y;
 	Vector2() :
 		x(0), y(0)
 	{}
-	Vector2(int x, int y) :
+	Vector2(float x, float y) :
 		x(x), y(y)
 	{}
 	Vector2 zero()
@@ -54,4 +54,14 @@ struct Vector2
 	}
 };
 
+struct Camera
+{
+	float x, y, w, h;
+	Camera() :
+		x(0), y(0), w(0), h(0)
+	{}
+	Camera(float x, float y, float w, float h) :
+		x(x), y(y), w(w), h(h)
+	{}
+};
 #endif

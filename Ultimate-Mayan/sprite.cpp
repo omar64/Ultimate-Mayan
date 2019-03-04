@@ -19,7 +19,6 @@ Sprite::Sprite(Graphics &graphics, const std::string &filePath, int sourceX, int
 	this->_sourceRect.w = width;
 	this->_sourceRect.h = height;
 
-	printf("%s",filePath);
 	this->_spriteSheet = SDL_CreateTextureFromSurface(graphics.getRenderer(), graphics.loadImage(filePath));
 	if (this->_spriteSheet == NULL)
 	{

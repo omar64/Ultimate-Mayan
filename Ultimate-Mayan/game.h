@@ -12,10 +12,13 @@ class Game
 public:
 	Game();
 	~Game();
+
 private:
 	void gameLoop();
 	void draw(Graphics &graphics);
 	void update(float elapsedTime);
+	void tryToMoveCamera(float x_movement, float y_movement);
+
 
 	Player _player;
 
@@ -24,6 +27,8 @@ private:
 	HUD _hud;
 
 	Graphics _graphics;
+
+	Camera _camera;
 };
 
 #endif

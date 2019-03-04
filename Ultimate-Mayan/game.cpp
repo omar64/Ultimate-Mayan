@@ -15,7 +15,8 @@ namespace
 {
 	const int FPS = 60;
 	const int MAX_FRAME_TIME = 1000 / FPS;	
-
+	float CAMERA_X_POS = 0;
+	float CAMERA_Y_POS = 0;
 }
 
 enum Controls {
@@ -44,17 +45,21 @@ void Game::gameLoop()
 	Graphics graphics;
 	Input input;
 	SDL_Event event;
+	this->_camera = Camera(CAMERA_X_POS, CAMERA_Y_POS, globals::SCREEN_HEIGHT, globals::SCREEN_WIDTH);
 
 	this->_level = Level("Ultimate Mayan", graphics);
 	this->_player = Player(graphics, this->_level.getPlayerSpawnPoint());
 	this->_hud = HUD(graphics, this->_player);
-
 
 	int LAST_UPDATE_TIME = SDL_GetTicks();
 	//Start the game loop
 	while (true)
 	{
 		input.beginNewFrame();
+
+		float const temporal_player_x = this->_player.getX();
+		float const temporal_player_y = this->_player.getY();
+
 
 		if (SDL_PollEvent(&event))
 		{
@@ -155,9 +160,13 @@ void Game::gameLoop()
 		const int CURRENT_TIME_MS = SDL_GetTicks();
 		int ELAPSED_TIME_MS = CURRENT_TIME_MS - LAST_UPDATE_TIME;
 		int aux = std::min(ELAPSED_TIME_MS, MAX_FRAME_TIME);
-
 		this->_graphics = graphics;
+
+
 		this->update(aux);
+		
+		this->tryToMoveCamera(temporal_player_x - this->_player.getX(), temporal_player_y - this->_player.getY());
+
 		LAST_UPDATE_TIME = CURRENT_TIME_MS;
 
 		this->draw(graphics);
@@ -169,7 +178,7 @@ void Game::draw(Graphics &graphics)
 	graphics.clear();
 	this->_level.draw(graphics);
 	this->_player.draw(graphics); //100, 100
-	this->_hud.draw(graphics);
+	//this->_hud.draw(graphics);
 
 	graphics.flip();
 }
@@ -202,4 +211,29 @@ void Game::update(float elapsedTime)
 		this->_player.handleEnemyCollisions(otherEnemies);
 	}
 }
+
+void Game::tryToMoveCamera(float x_movement, float y_movement)
+{
+	float new_camera_x = this->_camera.x - x_movement;
+	float new_camera_y = this->_camera.y - y_movement;
+	if (abs(x_movement) > 0)
+	{
+		//printf("x:%f    cam:%f      vel:%f\n", this->_player.getX(), this->_camera.x, x_movement);
+	}
+	if (new_camera_x >= 0 && new_camera_x <= this->_level.getSize().x - globals::SCREEN_WIDTH)
+	{
+		if (x_movement < 0)
+		{
+			if (this->_player.getX() >= globals::SCREEN_WIDTH / 2)
+			{
+				this->_player.putInTheMiddle();
+				this->_level.moveEverything(x_movement, 0);
+				this->_camera.x = new_camera_x;
+				this->_camera.y = new_camera_y;
+			}
+		}
+	}
+}
+
+
 

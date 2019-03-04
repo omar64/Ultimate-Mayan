@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 
+
 Tile::Tile() {}
 
 Tile::Tile(SDL_Texture* tileset, Vector2 size, Vector2 tilesetPosition, Vector2 position) :
@@ -11,6 +12,12 @@ Tile::Tile(SDL_Texture* tileset, Vector2 size, Vector2 tilesetPosition, Vector2 
 	_tilesetPosition(tilesetPosition),
 	_position(Vector2(position.x * globals::SPRITE_SCALE, position.y * globals::SPRITE_SCALE))
 {}
+
+void Tile::move(float x_movement, float y_movement) 
+{ 
+	this->_position.x += x_movement;
+	this->_position.y += y_movement;
+}
 
 void Tile::update(int elapsedTime) {}
 
