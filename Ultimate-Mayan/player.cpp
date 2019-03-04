@@ -195,8 +195,8 @@ void Player::update(float elapsedTime)
 
 	//Move by dx
 	this->_x += this->_dx * elapsedTime;
-	AnimatedSprite::update(elapsedTime);	
 	this->_y += this->_dy * elapsedTime;
+	AnimatedSprite::update(elapsedTime);
 }
 
 void Player::draw(Graphics &graphics)

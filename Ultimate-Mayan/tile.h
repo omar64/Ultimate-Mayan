@@ -13,7 +13,6 @@ public:
 	Tile(SDL_Texture* tileset, Vector2 size, Vector2 tilesetPosition, Vector2 position);
 	void update(int elapsedTime);
 	void draw(Graphics &graphics);
-	void move(float x_movement, float y_movement);
 	Vector2 inline getPosition() { return this->_position; }
 
 protected:

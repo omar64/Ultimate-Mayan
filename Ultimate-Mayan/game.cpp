@@ -227,7 +227,6 @@ void Game::tryToMoveCamera(float x_movement, float y_movement)
 			if (this->_player.getX() >= globals::SCREEN_WIDTH / 2)
 			{
 				this->_player.putInTheMiddle();
-				this->_level.moveEverything(x_movement, 0);
 				this->_camera.x = new_camera_x;
 				this->_camera.y = new_camera_y;
 			}

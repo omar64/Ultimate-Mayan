@@ -382,24 +382,3 @@ Vector2 Level::getTilesetPosition(Tileset tls, int gid, int tileWidth, int tileH
 	return finalTilesetPosition;
 }
 
-void Level::moveEverything(float x_movement, float y_movement)
-{	
-	for (int i = 0; i < this->_tileList.size(); i++)
-	{
-		_tileList.at(i).move(x_movement, y_movement);
-	}
-		
-	/*
-	for (int i = 0; i < this->_collisionRects.size(); i++)
-	{	
-		RectangleCollision tempRect = RectangleCollision(
-			std::ceil(((this->_collisionRects.at(i).getLeft()) * globals::SPRITE_SCALE) + x_movement),
-			std::ceil(this->_collisionRects.at(i).getTop() + y_movement) * globals::SPRITE_SCALE,
-			std::ceil(this->_collisionRects.at(i).getWidth()) * globals::SPRITE_SCALE,
-			std::ceil(this->_collisionRects.at(i).getHeight()) * globals::SPRITE_SCALE
-		);
-
-		this->_collisionRects.at(i) = tempRect;
-	}	
-	*/
-}

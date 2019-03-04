@@ -18,12 +18,6 @@ public:
 
 	}
 
-	void move(float x_movement, float y_movement)
-	{ 			
-		this->_x -= x_movement; 
-		this->_y += y_movement; 
-	}
-
 	const int getCenterX() const
 	{
 		return this->_x + this->_width / 2;
