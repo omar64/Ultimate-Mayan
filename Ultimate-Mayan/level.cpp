@@ -317,16 +317,16 @@ void Level::update(int elapsedTime, Player &player) {
 	}
 }
 
-void Level::draw(Graphics &graphics) {
+void Level::draw(Graphics &graphics, Camera &camera) {
 	for (int i = 0; i < this->_tileList.size(); i++) {
-		this->_tileList.at(i).draw(graphics);
+		this->_tileList.at(i).draw(graphics, camera);
 	}
 	for (int i = 0; i < this->_animatedTileList.size(); i++) {
-		this->_animatedTileList.at(i).draw(graphics);
+		this->_animatedTileList.at(i).draw(graphics, camera);
 	}
 	for (int i = 0; i < this->_enemies.size(); i++)
 	{
-		this->_enemies.at(i)->draw(graphics);
+		this->_enemies.at(i)->draw(graphics, camera);
 	}
 }
 

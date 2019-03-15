@@ -199,7 +199,7 @@ void Player::update(float elapsedTime)
 	AnimatedSprite::update(elapsedTime);
 }
 
-void Player::draw(Graphics &graphics)
+void Player::draw(Graphics &graphics, Camera &camera)
 {
-	AnimatedSprite::draw(graphics, this->_x, this->_y);
+	AnimatedSprite::draw(graphics, this->_x - camera.getX(), this->_y - camera.getY());
 }

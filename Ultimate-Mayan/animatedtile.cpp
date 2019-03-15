@@ -27,8 +27,8 @@ void AnimatedTile::update(int elapsedTime) {
 	Tile::update(elapsedTime);
 }
 
-void AnimatedTile::draw(Graphics &graphics) {
-	SDL_Rect destRect = { this->_position.x , this->_position.y,
+void AnimatedTile::draw(Graphics &graphics, Camera &camera) {
+	SDL_Rect destRect = { this->_position.x - camera.getX(), this->_position.y,
 		this->_size.x * globals::SPRITE_SCALE, this->_size.y * globals::SPRITE_SCALE };
 	SDL_Rect sourceRect = { this->_tilesetPositions.at(this->_tileToDraw).x, this->_tilesetPositions.at(this->_tileToDraw).y,
 		this->_size.x, this->_size.y };

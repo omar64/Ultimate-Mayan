@@ -176,8 +176,8 @@ void Game::gameLoop()
 void Game::draw(Graphics &graphics)
 {
 	graphics.clear();
-	this->_level.draw(graphics);
-	this->_player.draw(graphics); //100, 100
+	this->_level.draw(graphics, _camera);
+	this->_player.draw(graphics, _camera); //100, 100
 	//this->_hud.draw(graphics);
 
 	graphics.flip();
@@ -214,6 +214,9 @@ void Game::update(float elapsedTime)
 
 void Game::tryToMoveCamera(float x_movement, float y_movement)
 {
+	this->_camera.x = this->_player.getX() - (globals::SCREEN_HEIGHT / 2) - 32;
+	this->_camera.y = this->_player.getY() - (globals::SCREEN_WIDTH / 2) + 52;
+	/*
 	float new_camera_x = this->_camera.x - x_movement;
 	float new_camera_y = this->_camera.y - y_movement;
 	if (abs(x_movement) > 0)
@@ -226,12 +229,14 @@ void Game::tryToMoveCamera(float x_movement, float y_movement)
 		{
 			if (this->_player.getX() >= globals::SCREEN_WIDTH / 2)
 			{
-				this->_player.putInTheMiddle();
+				//delete this function
+				//this->_player.putInTheMiddle();
 				this->_camera.x = new_camera_x;
 				this->_camera.y = new_camera_y;
 			}
 		}
 	}
+	*/
 }
 
 

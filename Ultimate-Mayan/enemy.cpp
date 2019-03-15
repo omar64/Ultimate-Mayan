@@ -19,7 +19,7 @@ void Enemy::update(int elapsedTime, Player &player)
 	AnimatedSprite::update(elapsedTime);
 }
 
-void Enemy::draw(Graphics &graphics)
+void Enemy::draw(Graphics &graphics, Camera &camera)
 {
 	AnimatedSprite::draw(graphics, this->_x, this->_y);
 }
@@ -52,9 +52,9 @@ void AlienBlue::update(int elapsedTime, Player &player)
 	this->_x += this->_direction == RIGHT ? 0.05 : -0.05;
 }
 
-void AlienBlue::draw(Graphics &graphics)
+void AlienBlue::draw(Graphics &graphics, Camera &camera)
 {
-	Enemy::draw(graphics);
+	Enemy::draw(graphics, camera);
 }
 
 void AlienBlue::animationDone(std::string currentAnimation)

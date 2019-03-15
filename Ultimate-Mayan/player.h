@@ -12,7 +12,7 @@ class Player  : public AnimatedSprite
 	public:
 		Player();
 		Player(Graphics &graphics, Vector2 spawnpoint);
-		void draw(Graphics &graphics);
+		void draw(Graphics &graphics, Camera &camera);
 		void update(float elapsedTime);
 		void putInTheMiddle();
 

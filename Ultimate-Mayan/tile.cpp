@@ -15,10 +15,10 @@ Tile::Tile(SDL_Texture* tileset, Vector2 size, Vector2 tilesetPosition, Vector2 
 
 void Tile::update(int elapsedTime) {}
 
-void Tile::draw(Graphics &graphics){
-	SDL_Rect destRect = { this->_position.x, this->_position.y,
+void Tile::draw(Graphics &graphics, Camera &camera){
+	SDL_Rect destRect = { this->_position.x - camera.getX(), this->_position.y - camera.getY(),
 		this->_size.x * globals::SPRITE_SCALE, this->_size.y * globals::SPRITE_SCALE };
 	SDL_Rect sourceRect = { this->_tilesetPosition.x, this->_tilesetPosition.y, this->_size.x, this->_size.y };
-
+	
 	graphics.blitSurface(this->_tileset, &sourceRect, &destRect);
 }

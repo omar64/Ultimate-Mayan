@@ -23,7 +23,7 @@ public:
 	Level(std::string mapName, Graphics &graphics);
 	~Level();
 	void update(int elapsedTime, Player &player);
-	void draw(Graphics &graphics);
+	void draw(Graphics &graphics, Camera &camera);
 
 	std::vector<RectangleCollision> checkTileCollisions(const RectangleCollision &other);
 	std::vector<Slope> checkSlopeCollisions(const RectangleCollision &other);
@@ -31,8 +31,6 @@ public:
 
 	const Vector2 getPlayerSpawnPoint() const;
 	const inline Vector2 getSize() const { return Vector2(this->_size.x * this->_tileSize.x, this->_size.y * this->_tileSize.y); }
-
-	void moveEverything(float x_movement, float y_movement);
 
 private:
 	std::string _mapName;
