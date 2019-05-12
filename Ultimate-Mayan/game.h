@@ -6,6 +6,7 @@
 #include "level.h"
 #include "hud.h"
 #include "graphics.h"
+#include "bullet.h"
 
 class Game
 {

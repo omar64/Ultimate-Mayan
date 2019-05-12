@@ -1,7 +1,12 @@
-﻿  tinyxml2.cpp
+﻿  bullet.cpp
+c:\users\poseidon9\desktop\repositories\ultimate-mayan\ultimate-mayan\tile.h(4): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+bullet.cpp(11): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+bullet.cpp(24): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+bullet.cpp(47): warning C4477: 'printf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'double'
+bullet.cpp(47): warning C4477: 'printf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 2 tiene el tipo 'double'
   Generando código
-  0 of 2309 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+  5 of 2399 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    20 functions had inline decision re-evaluated but remain unchanged
+    4 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
   Ultimate-Mayan.vcxproj -> C:\Users\poseidon9\Desktop\Repositories\Ultimate-Mayan\Release\Ultimate-Mayan.exe

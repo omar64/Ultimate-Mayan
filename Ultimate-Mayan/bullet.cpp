@@ -8,8 +8,7 @@ Bullet::Bullet()
 
 Bullet::Bullet(Graphics &graphics, std::string filePath, int sourceX, int sourceY, int width, int height, Vector2 spawnPoint, int timeToUpdate) :
 	AnimatedSprite(graphics, filePath, sourceX, sourceY, width, height, spawnPoint.x, spawnPoint.y, timeToUpdate)
-{
-}
+{}
 
 Bullet::~Bullet()
 {
@@ -22,7 +21,7 @@ void Bullet::update(int elapsedTime, Player &player)
 
 void Bullet::draw(Graphics &graphics, Camera &camera)
 {
-	AnimatedSprite::draw(graphics, this->_x, this->_y);
+	AnimatedSprite::draw(graphics, this->_x - camera.getX(), this->_y - camera.getY());
 }
 
 
@@ -34,6 +33,9 @@ FirstBullet::FirstBullet()
 FirstBullet::FirstBullet(Graphics &graphics, Vector2 spawnPoint, Direction direction) :
 	Bullet(graphics, "Imagenes/Sprites/Bala.png", 0, 0, 4, 4, spawnPoint, 200)
 {
+	this->_x = 10;
+	this->_y = 10;
+
 	this->_direction = direction;
 	this->setupAnimations();
 	this->playAnimation("meh");
@@ -41,8 +43,8 @@ FirstBullet::FirstBullet(Graphics &graphics, Vector2 spawnPoint, Direction direc
 
 void FirstBullet::update(int elapsedTime, Player &player)
 {
-	this->_x += this->_direction == RIGHT ? this->_velocity : -this->_velocity;
-	printf("Bullet: x:%d   y:%d", this->_x, this->_y);
+	this->_x += 1;//this->_direction == RIGHT ? this->_velocity : -this->_velocity;
+	printf("Bullet: x:%d   y:%d\n", this->_x, this->_y);
 	Bullet::update(elapsedTime, player);
 }
 
