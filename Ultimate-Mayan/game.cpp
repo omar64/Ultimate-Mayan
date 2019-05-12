@@ -51,6 +51,13 @@ void Game::gameLoop()
 	this->_player = Player(graphics, this->_level.getPlayerSpawnPoint());
 	this->_hud = HUD(graphics, this->_player);
 
+	printf("player x:%d  ---  y:%d", this->_player.getX(), this->_player.getY());
+
+
+	// No Touchie
+	std::vector<FirstBullet> _player_bullets;
+	// No Touchie
+
 	int LAST_UPDATE_TIME = SDL_GetTicks();
 	//Start the game loop
 	while (true)
@@ -148,6 +155,10 @@ void Game::gameLoop()
 			}
 			else
 			{
+				// NO Touchie
+				FirstBullet bullet(graphics, Vector2(50, 50), RIGHT);
+				_player_bullets.push_back(bullet);
+				// NO Touchie
 				printf("BOTON\n");
 			}
 		}
@@ -164,6 +175,13 @@ void Game::gameLoop()
 
 
 		this->update(aux);
+		// No Touchie
+		for (auto &bullet : _player_bullets) // access by reference to avoid copying
+		{
+			bullet.update(aux, this->_player);
+			bullet.draw(graphics, _camera);
+		}
+		// No Touchie
 		
 		this->tryToMoveCamera(temporal_player_x - this->_player.getX(), temporal_player_y - this->_player.getY());
 
@@ -197,18 +215,18 @@ void Game::update(float elapsedTime)
 		this->_player.handleTileCollisions(others);
 	}
 	//check slopes
-	std::vector<Slope> otherSlopes;
-	if ((otherSlopes = this->_level.checkSlopeCollisions(this->_player.getBoundingBox())).size() > 0)
-	{
-		this->_player.handleSlopeCollisions(otherSlopes);
-	}
+	//std::vector<Slope> otherSlopes;
+	//if ((otherSlopes = this->_level.checkSlopeCollisions(this->_player.getBoundingBox())).size() > 0)
+	//{
+	//	this->_player.handleSlopeCollisions(otherSlopes);
+	//}
 
 	//check enemies
-	std::vector<Enemy*> otherEnemies;
+	std::vector<Enemy*> enemies;
 	
-	if ((otherEnemies = this->_level.checkEnemyCollisions(this->_player.getBoundingBox())).size() > 0)
+	if ((enemies = this->_level.checkEnemyCollisions(this->_player.getBoundingBox())).size() > 0)
 	{
-		this->_player.handleEnemyCollisions(otherEnemies);
+		this->_player.handleEnemyCollisions(enemies);
 	}
 }
 

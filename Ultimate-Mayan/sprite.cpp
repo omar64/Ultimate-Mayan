@@ -30,7 +30,6 @@ Sprite::Sprite(Graphics &graphics, const std::string &filePath, int sourceX, int
 			printf("Invalid path\n");
 	}
 	this->_boundingBox = RectangleCollision(this->_x, this->_y, width * globals::SPRITE_SCALE, height * globals::SPRITE_SCALE);
-
 }
 
 Sprite::~Sprite()
