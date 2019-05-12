@@ -47,7 +47,7 @@ void Game::gameLoop()
 	SDL_Event event;
 	this->_camera = Camera(CAMERA_X_POS, CAMERA_Y_POS, globals::SCREEN_HEIGHT, globals::SCREEN_WIDTH);
 
-	this->_level = Level("Ultimate Mayan Area 01", graphics);
+	this->_level = Level("Ultimate Mayan02", graphics);
 	this->_player = Player(graphics, this->_level.getPlayerSpawnPoint());
 	this->_hud = HUD(graphics, this->_player);
 
